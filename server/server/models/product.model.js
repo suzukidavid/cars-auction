@@ -29,7 +29,16 @@ const ProductSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  shop: {type: mongoose.Schema.ObjectId, ref: 'Shop'}
+  shop: {type: mongoose.Schema.ObjectId, ref: 'Shop'},//
+  ///
+  year: Number,
+  model: String,
+  fuel:{
+    isDiesel: {type: Boolean, default: false },
+    isPetrol: {type: Boolean, default: true},
+    isElectric: {type: Boolean, default: false}
+  },
+  firstRegistrationDate: Date
 })
 
 export default mongoose.model('Product', ProductSchema)
