@@ -58,6 +58,7 @@ const list = async (req, res) => {
     console.log("calling");
 
     let users = await makePaginatable(User, page, limit);
+    console.log(config);
     res.json(users);
   } catch (err) {
     return res.status(400).json({

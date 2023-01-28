@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 import crypto from 'crypto'
+import { cUserType } from '../../config/constants'
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -28,7 +30,14 @@ const UserSchema = new mongoose.Schema({
     default: false
   },
   stripe_seller: {},
-  stripe_customer: {}
+  stripe_customer: {},
+
+  //user role: answer - customer or company?
+  role:{
+    type: String,
+    enum: [ cUserType.Customer, cUserType.Company, cUserType.Admin],
+    default: cUserType.Customer
+  }
 })
 
 UserSchema
