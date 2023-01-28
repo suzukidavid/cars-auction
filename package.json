@@ -1,0 +1,32 @@
+{
+  "name": "car-auction-bidding",
+  "version": "1.0.0",
+  "description": "Cars Live Auction MERN Stack",
+  "author": "prettyblueberry",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "express",
+    "mongodb",
+    "node",
+    "mern",
+    "live",
+    "auction"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prettyblueberry/cars-auction.git"
+  },
+  "scripts": {
+  },
+  "engines": {
+    "node": "16.14.0",
+    "npm": "6.14.4"
+  },
+  "devDependencies": {
+    
+  },
+  "dependencies": {
+    
+  }
+}
