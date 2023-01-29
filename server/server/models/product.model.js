@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+import vehicleSchema from "./vehicle.schema";
+
 const ProductSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -13,7 +15,7 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  category: {
+  category: { //<<_ berry: I think here are unnecessary
     type: String
   },
   quantity: {
@@ -29,16 +31,11 @@ const ProductSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  shop: {type: mongoose.Schema.ObjectId, ref: 'Shop'},//
-  ///
-  year: Number,
-  model: String,
-  fuel:{
-    isDiesel: {type: Boolean, default: false },
-    isPetrol: {type: Boolean, default: true},
-    isElectric: {type: Boolean, default: false}
-  },
-  firstRegistrationDate: Date
+  shop: {type: mongoose.Schema.ObjectId, ref: 'Shop'}, // berry: I think it's unnecessary.
+
+  /////
+  vehicleInfo: vehicleSchema, // car info
+  seller: { type: mongoose.Schema.ObjectId, ref: 'User'  },
 })
 
 export default mongoose.model('Product', ProductSchema)
