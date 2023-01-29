@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import VehicleSchema from "./vehicle.schema";
+import VehicleInfoSchema from "./vehicle-info.schema";
 import { cAuctionStatus } from '../../config/constants'
 
 const AuctionSchema = new mongoose.Schema({
@@ -42,7 +42,7 @@ const AuctionSchema = new mongoose.Schema({
   }],
 
   // berry added
-  vehicleInfo: VehicleSchema, // car data
+  vehicleInfo: VehicleInfoSchema, // car data
   status: {
     type: String,
     enum: [ cAuctionStatus.MainTime, cAuctionStatus.ExtraTime, cAuctionStatus.Closed ],

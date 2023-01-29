@@ -1,13 +1,16 @@
-const VehicleSchema = {
+const VehicleInfoSchema = {
     year: Number,
+    make: String,
     model: String,
+    trim: String,
     fuel: {
         isDiesel: { type: Boolean, default: false },
         isPetrol: { type: Boolean, default: true },
         isElectric: { type: Boolean, default: false }
     },
-    firstRegistrationDate: Date,
-    sideImages: [{ data: Buffer, contentType: String }]
+    location: String,
+    miles: Number,
+    firstRegistrationDate: Date
 };
 
-export default VehicleSchema;
+export default VehicleInfoSchema;

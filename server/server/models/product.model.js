@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import vehicleSchema from "./vehicle.schema";
+import vehicleSchema from "./vehicle-info.schema";
 
 const ProductSchema = new mongoose.Schema({
   name: {
