@@ -6,12 +6,19 @@
     };
 
 const cAuctionStatus = {
+        Prepare: "Prepare",
         MainTime: "MainTime",
         ExtraTime: "ExtraTime",
         Closed: "Closed"
 }
 
+const cSaleType = {
+        Auction: "Auction",
+        FixedPrice: "FixedPrice"
+}
+
 export {
     cUserType,
-    cAuctionStatus
+    cAuctionStatus,
+    cSaleType
 };

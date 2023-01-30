@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import vehicleSchema from "./vehicle-info.schema";
+import {cSaleType} from "../../config/constants";
 
 const ProductSchema = new mongoose.Schema({
   name: {
@@ -20,7 +21,8 @@ const ProductSchema = new mongoose.Schema({
   },
   quantity: {
     type: Number,
-    required: "Quantity is required"
+    // required: "Quantity is required"
+    default: 1
   },
   price: {
     type: Number,
@@ -36,6 +38,9 @@ const ProductSchema = new mongoose.Schema({
   /////
   vehicleInfo: vehicleSchema, // car info
   seller: { type: mongoose.Schema.ObjectId, ref: 'User'  },
+  type: { type: String, enum: [cSaleType.FixedPrice, cSaleType.Auction]},
+  auction: { type: mongoose.Schema.ObjectId, ref: 'Auction' },
+  adver: { type: mongoose.Schema.ObjectId, ref: 'Adver' }
 })
 
 export default mongoose.model('Product', ProductSchema)

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import vehicleSchema from "./vehicle-info.schema";
 
 const AdverSchema = new mongoose.Schema({
     title: {
@@ -7,11 +6,11 @@ const AdverSchema = new mongoose.Schema({
         trim: true,
         required: 'Title is required'
     },
-    image: {
+    image: { //large image for ads
         data: Buffer,
         contentType: String
     },
-    childImages: [{
+    childImages: [{ // small images for ads
         data: Buffer,
         contentType: String
     }],
@@ -19,17 +18,13 @@ const AdverSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    price: {
-        type: Number,
-        required: "Price is required"
-    },
     updated: Date,
     created: {
       type: Date,
       default: Date.now
     },
-    vehicleInfo: vehicleSchema, // car info
-    seller: { type: mongoose.Schema.ObjectId, ref: 'User'  }
+    seller: { type: mongoose.Schema.ObjectId, ref: 'User'  },
+    product: { type: mongoose.Schema.ObjectId, ref: 'Product'  }
 })
 
 export default mongoose.model('Adver', AdverSchema)
