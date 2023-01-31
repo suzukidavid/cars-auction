@@ -27,7 +27,6 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Rental page sections
-import Search from "pages/LandingPages/Rental/sections/Search";
 import Places from "pages/LandingPages/Rental/sections/Places";
 import Testimonials from "pages/LandingPages/Rental/sections/Testimonials";
 import Faq from "pages/LandingPages/Rental/sections/Faq";
@@ -38,7 +37,7 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Images
-import bgImage from "assets/images/bg-rental.jpeg";
+import bgImage from "assets/images/motors.stylemixthemes.com/slider2.jpg";
 
 function Rental() {
   return (
@@ -108,7 +107,6 @@ function Rental() {
           overflow: "hidden",
         }}
       >
-        <Search />
         <Places />
         <Testimonials />
         <Faq />
