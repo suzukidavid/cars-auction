@@ -84,7 +84,7 @@ const Places = () => {
   
   return (
     <>
-      <MKBox component="section" py={1} className={"margin"}>
+      <MKBox component="section" py={1}>
         <Container>
           <Grid
             container
