@@ -40,6 +40,7 @@ import footerRoutes from "footer.routes";
 import bgImage from "assets/images/motors.stylemixthemes.com/slider2.jpg";
 
 function Rental() {
+  const brand = <span style={{fontSize: "2.5rem", color: "#9595f7"}}>iAuto</span>;
   return (
     <>
       <DefaultNavbar
@@ -52,9 +53,10 @@ function Rental() {
         }}
         transparent
         light
+        brand={brand}
       />
       <MKBox
-        minHeight="50vh"
+        minHeight="98vh"
         width="100%"
         sx={{
           backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
@@ -76,23 +78,7 @@ function Rental() {
             lg={8}
             justifyContent="center"
             sx={{ mx: "auto", textAlign: "center" }}
-          >
-            <MKTypography
-              variant="h2"
-              color="white"
-              sx={({ breakpoints, typography: { size } }) => ({
-                [breakpoints.down("md")]: {
-                  fontSize: size["3xl"],
-                },
-              })}
-            >
-              Book your next trip
-            </MKTypography>
-            <MKTypography variant="body1" color="white" mt={1}>
-              The time is now for it be okay to be great. People in this world shun people for being
-              nice.
-            </MKTypography>
-          </Grid>
+          />
         </Container>
       </MKBox>
       <Card

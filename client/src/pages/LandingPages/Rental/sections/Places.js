@@ -13,6 +13,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -26,116 +27,196 @@ import MKPagination from "components/MKPagination";
 
 import vehicle1 from "assets/images/motors.stylemixthemes.com/01-6-255x135.jpg";
 
-import VehicleCard from "../../../../components/VehicleCards/VehicleCard";
-import VehicleAuctionCard from "../../../../components/VehicleCards/VehicleAuctionCard";
+import {useEffect, useState, useRef} from "react";
 
-function Places() {
+// Images
+import bg1 from "assets/images/bg.jpg";
+import bg2 from "assets/images/examples/content-1.jpg";
+import bg3 from "assets/images/examples/content-2.jpg";
+import bg4 from "assets/images/examples/content-3.jpg";
+import bg5 from "assets/images/examples/content-4.jpg";
+import bg6 from "assets/images/examples/content-5.jpg";
+import MKTypography from "../../../../components/MKTypography";
+import MKBadge from "../../../../components/MKBadge";
+import VehicleAuctionCard from "../../../../components/VehicleCards/VehicleAuctionCard";
+import VehicleCard from "../../../../components/VehicleCards/VehicleCard";
+
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+
+  // Remember the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  // Set up the interval.
+  useEffect(() => {
+    const id = setInterval(() => {
+      savedCallback.current();
+    }, delay);
+    return () => clearInterval(id);
+  }, [delay]);
+}
+const timeNow = Date.now();
+const Places = () => {
   const actionProps = {
     type: "internal",
     route: "/pages/landing-pages/rental",
-    color: "info",
-    label: "from / night",
+    color: "success",
+    label: "place a bid",
+  };
+  const actionProps1 = {
+    type: "internal",
+    route: "/pages/landing-pages/rental",
+    color: "success",
+    label: "add to my cart",
   };
 
+  const [auctionPrice, setAuctionPrice] = useState(13000);
+  const [auctionPeople, setAuctionPeople] = useState(15);
+
+  useInterval(() => {
+    if(Date.now() <= timeNow + 100000){
+      setAuctionPrice(auctionPrice + 80);
+      setAuctionPeople(auctionPeople + 1);
+    }
+  }, 1000);
+  
   return (
-    <MKBox component="section" py={3}>
-      <Container>
-        <Grid container spacing={3} sx={{ mt: 3 }}>
-          <Grid item xs={12} md={6} lg={3}>
-            <MKBox mt={3}>
-              <VehicleAuctionCard
-                image={vehicle1}
-                title="MERCEDES-BENZ C-CLASS 2015"
-                vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
-                timeData={{timeStart: Date.now(), timeDuration: 100000}}
-                topBidPrice={13000}
-                allBidCount={13}
-                action={actionProps}
-              />
-            </MKBox>
+    <>
+      <MKBox component="section" py={1} className={"margin"}>
+        <Container>
+          <Grid
+            container
+            item
+            xs={8}
+            flexDirection="column"
+            alignItems="center"
+            mx="auto"
+            textAlign="left"
+            mb={6}
+          >
+            <MKTypography variant="h3" mb={1}>
+              Auction
+            </MKTypography>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MKBox mt={3}>
-              <VehicleCard
-                image={vehicle1}
-                title="MERCEDES-BENZ C-CLASS 2015"
-                vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
-                action={actionProps}
-              />
-            </MKBox>
+          <Grid container spacing={3} sx={{ mt: 3 }}>
+            <Grid item xs={12} md={6} lg={3}>
+              <MKBox mt={3}>
+                <VehicleAuctionCard
+                  image={vehicle1}
+                  title="MERCEDES-BENZ"
+                  vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                  timeData={{timeStart: timeNow, timeDuration: 100000}}
+                  topBidPrice={auctionPrice}
+                  allBidCount={auctionPeople}
+                  action={actionProps}
+                />
+              </MKBox>
+            </Grid>
+            <Grid item xs={12} md={6} lg={3}>
+              <MKBox mt={3}>
+                <VehicleAuctionCard
+                  image={vehicle1}
+                  title="MERCEDES-BENZ"
+                  vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                  timeData={{timeStart: timeNow, timeDuration: 100000}}
+                  topBidPrice={auctionPrice}
+                  allBidCount={auctionPeople}
+                  action={actionProps}
+                />
+              </MKBox>
+            </Grid>
+            <Grid item xs={12} md={6} lg={3}>
+              <MKBox mt={3}>
+                <VehicleAuctionCard
+                  image={vehicle1}
+                  title="MERCEDES-BENZ"
+                  vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                  timeData={{timeStart: timeNow, timeDuration: 100000}}
+                  topBidPrice={auctionPrice}
+                  allBidCount={auctionPeople}
+                  action={actionProps}
+                />
+              </MKBox>
+            </Grid>
+            <Grid item xs={12} md={6} lg={3}>
+              <MKBox mt={3}>
+                <VehicleAuctionCard
+                  image={vehicle1}
+                  title="MERCEDES-BENZ"
+                  vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                  timeData={{timeStart: timeNow, timeDuration: 100000}}
+                  topBidPrice={auctionPrice}
+                  allBidCount={auctionPeople}
+                  action={actionProps}
+                />
+              </MKBox>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MKBox mt={3}>
-              <VehicleCard
-                image={vehicle1}
-                title="MERCEDES-BENZ C-CLASS 2015"
-                vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
-                action={actionProps}
-              />
-            </MKBox>
+        </Container>
+      </MKBox>
+      <MKBox component="section" py={1}>
+        <Container>
+          <Grid
+            container
+            item
+            xs={8}
+            flexDirection="column"
+            alignItems="center"
+            mx="auto"
+            textAlign="left"
+            mb={6}
+          >
+            <MKTypography variant="h4" mb={1}>
+              Fixed Price
+            </MKTypography>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MKBox mt={3}>
-              <VehicleCard
-                image={vehicle1}
-                title="MERCEDES-BENZ C-CLASS 2015"
-                vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
-                action={actionProps}
-              />
-            </MKBox>
+          <Grid container spacing={1} sx={{ mt: 3 }}>
+            <Grid item xs={12} md={6} lg={3}>
+              <MKBox mt={3}>
+                <VehicleCard
+                  image={vehicle1}
+                  title="MERCEDES-BENZ"
+                  vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                  action={actionProps1}
+                />
+              </MKBox>
+            </Grid>
+            <Grid item xs={12} md={6} lg={3}>
+              <MKBox mt={3}>
+                <VehicleCard
+                  image={vehicle1}
+                  title="MERCEDES-BENZ"
+                  vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                  action={actionProps1}
+                />
+              </MKBox>
+            </Grid>
+            <Grid item xs={12} md={6} lg={3}>
+              <MKBox mt={3}>
+                <VehicleCard
+                  image={vehicle1}
+                  title="MERCEDES-BENZ"
+                  vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                  action={actionProps1}
+                />
+              </MKBox>
+            </Grid>
+            <Grid item xs={12} md={6} lg={3}>
+              <MKBox mt={3}>
+                <VehicleCard
+                  image={vehicle1}
+                  title="MERCEDES-BENZ"
+                  vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                  action={actionProps1}
+                />
+              </MKBox>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container spacing={3} sx={{ mt: 3 }}>
-          <Grid item xs={12} md={6} lg={3}>
-            <MKBox mt={3}>
-              <VehicleCard
-                image={vehicle1}
-                title="MERCEDES-BENZ C-CLASS 2015"
-                vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
-                action={actionProps}
-              />
-            </MKBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MKBox mt={3}>
-              <VehicleCard
-                image={vehicle1}
-                title="MERCEDES-BENZ C-CLASS 2015"
-                vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
-                action={actionProps}
-              />
-            </MKBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MKBox mt={3}>
-              <VehicleCard
-                image={vehicle1}
-                title="MERCEDES-BENZ C-CLASS 2015"
-                vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
-                action={actionProps}
-              />
-            </MKBox>
-          </Grid>
-        </Grid>
-        <MKBox mt={5}>
-          <MKPagination>
-            <MKPagination item>
-              <Icon>keyboard_arrow_left</Icon>
-            </MKPagination>
-            <MKPagination item active>
-              1
-            </MKPagination>
-            <MKPagination item>2</MKPagination>
-            <MKPagination item>3</MKPagination>
-            <MKPagination item>4</MKPagination>
-            <MKPagination item>5</MKPagination>
-            <MKPagination item>
-              <Icon>keyboard_arrow_right</Icon>
-            </MKPagination>
-          </MKPagination>
-        </MKBox>
-      </Container>
-    </MKBox>
+        </Container>
+      </MKBox>
+    </>
   );
 }
 
