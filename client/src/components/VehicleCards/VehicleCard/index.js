@@ -66,7 +66,7 @@ function VehicleCard({ image, title, description, vehicleInfo, action }) {
         />
       </MKBox>
       <MKBox p={3} mt={-2}>
-        <MKTypography display="inline" variant="h5" fontWeight="bold">
+        <MKTypography display="inline" variant="h6" fontWeight="bold">
           {title}
         </MKTypography>
         <MKTypography display="block" variant="button" color="text" fontWeight="regular" mb={0.75}>

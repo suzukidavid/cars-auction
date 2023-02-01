@@ -1,14 +1,27 @@
 import PropTypes from "prop-types";
+import PaidIcon from '@mui/icons-material/Paid';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import VehicleCard from "../VehicleCard";
 import AuctionCountdown from "./AuctionCountdown";
+import MKBadge from "../../MKBadge";
 
 function VehicleAuctionCard({ image, title, timeData, topBidPrice, allBidCount, vehicleInfo, action }){
 	const { timeStart, timeDuration } = timeData;
 	const timeEnd = timeStart + timeDuration;
+	const description = <>
+		<AuctionCountdown timeEnd={timeEnd}/>
+		<MKBadge badgeContent={<><PaidIcon />&nbsp;{topBidPrice}</>} color="light" container />
+		<MKBadge badgeContent={<><PeopleAltIcon />&nbsp;{allBidCount}</>} color="light" container />
+	</>;
 
-	const description = <AuctionCountdown timeEnd={timeEnd}/>;
 	return (
-		<VehicleCard image={image} title={title} description={description} timeData={timeData} vehicleInfo={vehicleInfo} action={action} />
+		<VehicleCard
+			image={image}
+			title={title}
+			description={description}
+			timeData={timeData}
+			vehicleInfo={vehicleInfo}
+			action={action} />
 	);
 }
 
