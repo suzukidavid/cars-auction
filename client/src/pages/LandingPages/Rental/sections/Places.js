@@ -22,14 +22,12 @@ import Icon from "@mui/material/Icon";
 import MKBox from "components/MKBox";
 import MKPagination from "components/MKPagination";
 
-// Material Kit 2 PRO React components
-import SimpleBookingCard from "examples/Cards/BookingCards/SimpleBookingCard";
-
 // Images
 
 import vehicle1 from "assets/images/motors.stylemixthemes.com/01-6-255x135.jpg";
 
 import VehicleCard from "../../../../components/VehicleCards/VehicleCard";
+import VehicleAuctionCard from "../../../../components/VehicleCards/VehicleAuctionCard";
 
 function Places() {
   const actionProps = {
@@ -45,10 +43,13 @@ function Places() {
         <Grid container spacing={3} sx={{ mt: 3 }}>
           <Grid item xs={12} md={6} lg={3}>
             <MKBox mt={3}>
-              <VehicleCard
+              <VehicleAuctionCard
                 image={vehicle1}
                 title="MERCEDES-BENZ C-CLASS 2015"
                 vehicleInfo={{ miles: 15, fuel: "12/23", transmission: "Manual" }}
+                timeData={{timeStart: Date.now(), timeDuration: 100000}}
+                topBidPrice={13000}
+                allBidCount={13}
                 action={actionProps}
               />
             </MKBox>

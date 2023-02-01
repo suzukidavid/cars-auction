@@ -34,6 +34,7 @@ import AddRoadIcon from "@mui/icons-material/AddRoad";
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
+// eslint-disable-next-line react/prop-types
 function VehicleCard({ image, title, description, vehicleInfo, action }) {
   return (
     <Card>
@@ -117,17 +118,11 @@ function VehicleCard({ image, title, description, vehicleInfo, action }) {
   );
 }
 
-// Setting default props for the SimpleBookingCard
-VehicleCard.defaultProps = {
-  description: "",
-};
 
 // Typechecking props for the VehicleCard
 VehicleCard.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  description: PropTypes.string,
   vehicleInfo: PropTypes.shape({
     miles: PropTypes.number,
     fuel: PropTypes.string,
